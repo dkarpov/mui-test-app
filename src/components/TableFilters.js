@@ -20,12 +20,13 @@ export default function TableFilters({ onDataChange, onTypeChange }) {
     <Box
       sx={{
         display: 'flex',
+        width: '100%',
         flexDirection: { xs: 'column', sm: 'column', md: 'row', lg: 'row' },
       }}
     >
       <TextField
         size="small"
-        sx={{ mr: 5, minWidth: 120, maxWidth: 200 }}
+        sx={{ mr: 5, minWidth: 220, maxWidth: 400 }}
         select
         label="Date"
         defaultValue=""
@@ -42,7 +43,7 @@ export default function TableFilters({ onDataChange, onTypeChange }) {
       </TextField>
       <TextField
         size="small"
-        sx={{ minWidth: 120, maxWidth: 200 }}
+        sx={{ minWidth: 220, maxWidth: 400 }}
         select
         label="Type"
         defaultValue=""

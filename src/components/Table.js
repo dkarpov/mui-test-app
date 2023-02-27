@@ -76,7 +76,7 @@ export default function TableWrapper({ rows }) {
   }, [])
 
   return (
-    <>
+    <Container sx={{ width: '100%' }}>
       <TableFilters onDataChange={dataFilterChange} onTypeChange={typeFilterChange} />
       <Container component={Paper}>
         <Box
@@ -145,6 +145,6 @@ export default function TableWrapper({ rows }) {
           ))}
         </Stack>
       </Container>
-    </>
+    </Container>
   )
 }
