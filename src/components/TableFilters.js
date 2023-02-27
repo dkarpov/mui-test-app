@@ -1,7 +1,7 @@
 import * as React from 'react'
 import MenuItem from '@mui/material/MenuItem'
 
-import { TextField } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 
 const dateFilterOptions = [
   { text: '7 dni', value: 7 },
@@ -17,10 +17,15 @@ const typeFilterOptions = [
 
 export default function TableFilters({ onDataChange, onTypeChange }) {
   return (
-    <>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'column', md: 'row', lg: 'row' },
+      }}
+    >
       <TextField
         size="small"
-        sx={{ mr: 5, minWidth: 120 }}
+        sx={{ mr: 5, minWidth: 120, maxWidth: 200 }}
         select
         label="Date"
         defaultValue=""
@@ -37,7 +42,7 @@ export default function TableFilters({ onDataChange, onTypeChange }) {
       </TextField>
       <TextField
         size="small"
-        sx={{ minWidth: 120, width: 150 }}
+        sx={{ minWidth: 120, maxWidth: 200 }}
         select
         label="Type"
         defaultValue=""
@@ -52,6 +57,6 @@ export default function TableFilters({ onDataChange, onTypeChange }) {
           </MenuItem>
         ))}
       </TextField>
-    </>
+    </Box>
   )
 }

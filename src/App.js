@@ -32,17 +32,6 @@ export default function App() {
         </Routes>
       </BrowserRouter>
       )
-      <Fab
-        color="secondary"
-        onClick={() => toggleColorMode()}
-        sx={{
-          position: 'fixed',
-          right: ({ spacing }) => spacing(3),
-          bottom: ({ spacing }) => spacing(3),
-        }}
-      >
-        <AddIcon />
-      </Fab>
     </>
   )
 }
