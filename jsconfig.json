@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "incremental": true
+    "incremental": true,
+    "resolveJsonModule": true
   },
-  "include": ["src"],
+  "include": ["src", "assets"],
   "exclude": ["node_modules", "build", "functions"]
 }

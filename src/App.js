@@ -1,44 +1,40 @@
+import React from 'react'
 import AddIcon from '@mui/icons-material/Add'
-import GitHubIcon from '@mui/icons-material/GitHub'
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
+import Fab from '@mui/material/Fab'
+import UserPanelLayout from './layouts/UserPanelLayout'
+import { History, Users, Currencies, UserId } from './pages'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
-import Fab from '@mui/material/Fab'
 import IconButton from '@mui/material/IconButton'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import { ColorModeContext } from 'themes/ThemeProvider'
 
 export default function App() {
+  const { toggleColorMode } = React.useContext(ColorModeContext)
+
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>
-              cra-template-mui
-            </Typography>
-            <IconButton
-              size="large"
-              edge="end"
-              color="inherit"
-              onClick={() => window.open('https://github.com/tanabee/cra-template-mui', '_blank')}
-            >
-              <GitHubIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <Box sx={{ p: 3 }}>
-        <Typography variant="h1">h1. Heading</Typography>
-        <Typography variant="h2">h2. Heading</Typography>
-        <Typography variant="h3">h3. Heading</Typography>
-        <Typography variant="h4">h4. Heading</Typography>
-        <Typography variant="h5">h5. Heading</Typography>
-        <Typography variant="h6">h6. Heading</Typography>
-        <Typography variant="body1">body1. text</Typography>
-        <Typography variant="body2">body2. text</Typography>
-      </Box>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UserPanelLayout />}>
+            <Route index element={<History />} />
+            <Route path="/history" element={<History />} />
+            <Route path="users" element={<Users />} />
+            <Route path="users/:userId" element={<UserId />} />
+            <Route path="currencies" element={<Currencies />} />
+            <Route path="balance" element={<h1>Balances</h1>} />
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </Route>
+
+          <Route path="/login" element={<h1>Login Page place holder</h1>} />
+        </Routes>
+      </BrowserRouter>
+      )
       <Fab
         color="secondary"
+        onClick={() => toggleColorMode()}
         sx={{
           position: 'fixed',
           right: ({ spacing }) => spacing(3),
